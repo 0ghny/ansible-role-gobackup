@@ -1,0 +1,15 @@
+[Unit]
+Description=GoBackup service
+
+[Service]
+Type=forking
+WorkingDirectory={{ gobackup_dir }}
+Environment=GOBACKUP_DIR={{ gobackup_dir }}
+{% if gobackup_user is defined %}
+User={{ gobackup_user }}
+{% endif %}
+ExecStart={{ gobackup_bin_path }} start --config={{ gobackup_dir }}/{{ gobackup_config_filename }}
+ExecStop=killall gobackup
+
+[Install]
+WantedBy=multi-user.target

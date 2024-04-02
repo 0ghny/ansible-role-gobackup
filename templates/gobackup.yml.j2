@@ -1,0 +1,10 @@
+web:
+  host: {{ gobackup_web_address | default('127.0.0.1') }}
+  port: {{ gobackup_web_port | default(2703) }}
+  {% if gobackup_web_username is defined and gobackup_web_password is defined -%}
+  username: {{ gobackup_web_username }}
+  password: {{ gobackup_web_password }}
+  {% endif %}
+workdir: {{ gobackup_workdir | default('/tmp') }}
+models:
+  {{ "  " + gobackup_models | indent(4, false) }}

@@ -1,0 +1,8 @@
+[root]
+trim_trailing_whitespace = true
+end_of_line = lf
+insert_final_newline = true
+tab_width = 2
+
+[*.md]
+trim_trailing_whitespace = false
